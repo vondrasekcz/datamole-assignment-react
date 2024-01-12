@@ -10,6 +10,8 @@ export type HeaderProps = {
 
 const StyledDiv = styled.header`
     display: flex;
+    justify-content: space-between;
+    align-items: center;
 `;
 
 export const Header: React.FC<HeaderProps> = ({ handleAddItem, children }) => (
