@@ -7,6 +7,7 @@ import Button from "../Button";
 
 const StyledForm = styled.form`
     display: flex;
+    gap: 2px;
 `;
 
 export const Form = (props: FormProps): JSX.Element => {
