@@ -5,16 +5,20 @@ import TaskListItem from "./TaskListItem";
 interface Props {
     isLoading: boolean;
     isError: boolean;
-    tasks?: Task[];
+    unCheckedTasks?: Task[];
+    checkedTasks?: Task[];
 }
 
-const TaskList = ({ isLoading, isError, tasks }: Props): JSX.Element => {
+const TaskList = ({ isLoading, isError, checkedTasks, unCheckedTasks }: Props): JSX.Element => {
     if (isLoading) return <div>Loading...</div>;
-    if (isError || !tasks) return <div>Error</div>;
+    if (isError || !checkedTasks || !unCheckedTasks) return <div>Error</div>;
 
     return (
         <List>
-            {tasks.map((task) => (
+            {unCheckedTasks.map((task) => (
+                <TaskListItem key={task.id} task={task} />
+            ))}
+            {checkedTasks.map((task) => (
                 <TaskListItem key={task.id} task={task} />
             ))}
         </List>
