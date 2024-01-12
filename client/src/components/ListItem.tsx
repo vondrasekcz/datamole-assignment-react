@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Checkbox } from "./Checkbox";
 import { CheckboxProps } from "@radix-ui/react-checkbox";
 import { Pencil1Icon, TrashIcon } from "@radix-ui/react-icons";
+import Button from "./Button";
 
 const StyledDiv = styled.div`
     display: flex;
@@ -23,11 +24,11 @@ export const ListItem: React.FC<LiteItemProp> = ({ label, handleRemoval, handleE
     <StyledDiv>
         <Checkbox {...checkboxProps} />
         <Label>{label}</Label>
-        <button onClick={() => handleEdit()}>
+        <Button variant="primary" onClick={() => handleEdit()}>
             <TrashIcon />
-        </button>
-        <button onClick={() => handleRemoval()}>
+        </Button>
+        <Button variant="error" onClick={() => handleRemoval()}>
             <Pencil1Icon />
-        </button>
+        </Button>
     </StyledDiv>
 );
