@@ -8,4 +8,5 @@ export type Task = {
 
 const buildApiUrl = (path = ""): string => `${import.meta.env.VITE_HTTP_LINK}${path}`;
 
-export const getTasks = (): Promise<Task[]> => axios.get(buildApiUrl("/items")).then((res) => res.data);
+export const getTasks = (): Promise<Task[]> =>
+    axios.get(buildApiUrl("/items?_sort=createdAt&_order=desc")).then((res) => res.data);
