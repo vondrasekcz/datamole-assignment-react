@@ -1,11 +1,11 @@
 import ReactQueryProvider from "./components/ReactQueryProvider";
 import { ThemeProvider } from "./components/ThemeProvider";
-import TodoListPage from "./pages/TodoListPage/TodoListPage";
+import TaskListPage from "./pages/TaskListPage/TaskListPage";
 
-export const App: React.FC = () => (
+export const App = (): JSX.Element => (
     <ThemeProvider>
         <ReactQueryProvider>
-            <TodoListPage />
+            <TaskListPage />
         </ReactQueryProvider>
     </ThemeProvider>
 );

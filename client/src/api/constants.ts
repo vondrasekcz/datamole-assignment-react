@@ -1,3 +1,3 @@
 export const QUERY_KEYS = {
-    ITEMS: "items",
+    Tasks: "tasks",
 } as const;

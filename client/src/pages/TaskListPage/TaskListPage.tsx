@@ -1,25 +1,26 @@
 import { useQuery } from "react-query";
-import { QUERY_KEYS, getItems } from "src/api";
+import { QUERY_KEYS, getTasks } from "src/api";
 import { Container } from "src/components/Container";
 import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
 import { Layout } from "src/components/Layout";
+import TaskList from "./TaskList";
 
-const TodoListPage = (): JSX.Element => {
+const TaskListPage = (): JSX.Element => {
     const { data, isLoading, isError } = useQuery({
-        queryKey: QUERY_KEYS.ITEMS,
-        queryFn: getItems,
+        queryKey: QUERY_KEYS.Tasks,
+        queryFn: getTasks,
     });
 
     return (
         <Container>
             <Layout>
                 <Header handleAddItem={() => console.warn("unimplemented")}>To Do app</Header>
-                <pre>{JSON.stringify(data, null, 2)}</pre>
+                <TaskList isLoading={isLoading} isError={isError} tasks={data} />
                 <Footer />
             </Layout>
         </Container>
     );
 };
 
-export default TodoListPage;
+export default TaskListPage;
