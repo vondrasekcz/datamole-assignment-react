@@ -9,10 +9,7 @@ export type CreateTaskInput = {
     title: string;
 };
 
-export type UpdateTaskInput = {
-    id: number;
-    title: string;
-};
+export type PatchTaskInput = Partial<Omit<Task, "id">> & Pick<Task, "id">;
 
 const buildApiUrl = (path = ""): string => `${import.meta.env.VITE_HTTP_LINK}${path}`;
 
@@ -23,6 +20,6 @@ export function createTask(createTaskInput: CreateTaskInput): Promise<Task> {
     return axios.post(buildApiUrl("/items"), createTaskInput).then((res) => res.data);
 }
 
-export function updateTask({ id, ...updateTaskInput }: UpdateTaskInput): Promise<Task> {
-    return axios.patch(buildApiUrl(`/items/${id}`), updateTaskInput).then((res) => res.data);
+export function patchTask({ id, ...patchTaskInput }: PatchTaskInput): Promise<Task> {
+    return axios.patch(buildApiUrl(`/items/${id}`), patchTaskInput).then((res) => res.data);
 }
