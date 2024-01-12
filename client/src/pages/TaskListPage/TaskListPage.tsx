@@ -6,6 +6,12 @@ import { Header } from "src/components/Header";
 import { Layout } from "src/components/Layout";
 import TaskList from "./TaskList";
 import { useMemo } from "react";
+import styled from "styled-components";
+
+const StyledDiv = styled.div`
+    padding-top: 15px;
+    padding-bottom: 15px;
+`;
 
 const TaskListPage = (): JSX.Element => {
     const { data, isLoading, isError } = useQuery({
@@ -20,12 +26,14 @@ const TaskListPage = (): JSX.Element => {
         <Container>
             <Layout>
                 <Header handleAddItem={() => console.warn("unimplemented")}>To Do app</Header>
-                <TaskList
-                    isLoading={isLoading}
-                    isError={isError}
-                    unCheckedTasks={unCheckedTasks}
-                    checkedTasks={checkedTasks}
-                />
+                <StyledDiv>
+                    <TaskList
+                        isLoading={isLoading}
+                        isError={isError}
+                        unCheckedTasks={unCheckedTasks}
+                        checkedTasks={checkedTasks}
+                    />
+                </StyledDiv>
                 <Footer todoItems={unCheckedTasks?.length} doneItems={checkedTasks?.length} />
             </Layout>
         </Container>
