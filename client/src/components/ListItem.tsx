@@ -5,9 +5,28 @@ import { CheckboxProps } from "@radix-ui/react-checkbox";
 import { Pencil1Icon, TrashIcon } from "@radix-ui/react-icons";
 import Button from "./Button";
 
+const Actions = styled.div`
+    display: flex;
+    margin-left: auto;
+    gap: 2px;
+`;
+
 const StyledDiv = styled.div`
     display: flex;
     align-items: center;
+    &:hover {
+        background-color: ${({ theme }) => theme.colors.olive2};
+    }
+
+    // Actions display
+    &:hover {
+        ${Actions} {
+            display: flex;
+        }
+    }
+    ${Actions} {
+        display: none;
+    }
 `;
 
 const InputContainer = styled.div`
@@ -18,12 +37,6 @@ const Label = styled.label`
     margin-left: 15px;
     margin-right: 15px;
     word-break: break-word;
-`;
-
-const Actions = styled.div`
-    display: flex;
-    margin-left: auto;
-    gap: 2px;
 `;
 
 export type LiteItemProp = CheckboxProps & {
