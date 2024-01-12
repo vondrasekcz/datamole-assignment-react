@@ -26,7 +26,7 @@ const TaskListPage = (): JSX.Element => {
                     unCheckedTasks={unCheckedTasks}
                     checkedTasks={checkedTasks}
                 />
-                <Footer />
+                <Footer todoItems={unCheckedTasks?.length} doneItems={checkedTasks?.length} />
             </Layout>
         </Container>
     );
