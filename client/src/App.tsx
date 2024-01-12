@@ -1,18 +1,11 @@
-import { Container } from "./components/Container";
-import { Layout } from "./components/Layout";
-import { List } from "./components/List";
-import { Header } from "./components/Header";
-import { Footer } from "./components/Footer";
+import ReactQueryProvider from "./components/ReactQueryProvider";
 import { ThemeProvider } from "./components/ThemeProvider";
+import TaskListPage from "./pages/TaskListPage/TaskListPage";
 
-export const App: React.FC = () => (
+export const App = (): JSX.Element => (
     <ThemeProvider>
-        <Container>
-            <Layout>
-                <Header handleAddItem={() => console.warn("unimplemented")}>To Do app</Header>
-                <List />
-                <Footer />
-            </Layout>
-        </Container>
+        <ReactQueryProvider>
+            <TaskListPage />
+        </ReactQueryProvider>
     </ThemeProvider>
 );
