@@ -23,3 +23,13 @@ export const Done: Story = {
         checked: true,
     },
 };
+export const Hover: Story = {
+    args: {
+        ...ToDo.args,
+    },
+};
+Hover.parameters = {
+    pseudo: {
+        hover: true,
+    },
+};
