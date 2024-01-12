@@ -9,6 +9,11 @@ export type CreateTaskInput = {
     title: string;
 };
 
+export type UpdateTaskInput = {
+    id: number;
+    title: string;
+};
+
 const buildApiUrl = (path = ""): string => `${import.meta.env.VITE_HTTP_LINK}${path}`;
 
 export const getTasks = (): Promise<Task[]> =>
@@ -16,4 +21,8 @@ export const getTasks = (): Promise<Task[]> =>
 
 export function createTask(createTaskInput: CreateTaskInput): Promise<Task> {
     return axios.post(buildApiUrl("/items"), createTaskInput).then((res) => res.data);
+}
+
+export function updateTask({ id, ...updateTaskInput }: UpdateTaskInput): Promise<Task> {
+    return axios.patch(buildApiUrl(`/items/${id}`), updateTaskInput).then((res) => res.data);
 }
