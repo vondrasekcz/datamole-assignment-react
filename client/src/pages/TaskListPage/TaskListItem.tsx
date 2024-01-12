@@ -1,6 +1,7 @@
+import { CheckedState } from "@radix-ui/react-checkbox";
 import { useState } from "react";
 import { useMutation, useQueryClient } from "react-query";
-import { QUERY_KEYS, Task, updateTask } from "src/api";
+import { QUERY_KEYS, Task, patchTask } from "src/api";
 import { ListItem } from "src/components/ListItem";
 import { Form } from "src/components/form";
 
@@ -14,8 +15,8 @@ const TaskListItem = ({ task }: Props): JSX.Element => {
     const queryClient = useQueryClient();
     const [mode, setMode] = useState<HeaderMode>("view");
 
-    const updateTaskMutation = useMutation({
-        mutationFn: updateTask,
+    const patchTaskMutation = useMutation({
+        mutationFn: patchTask,
         onSuccess: (updatedItem) => {
             queryClient.setQueryData(QUERY_KEYS.Tasks, (oldData: Task[] = []): Task[] => {
                 const index = oldData.findIndex((item) => item.id === updatedItem.id);
@@ -37,17 +38,29 @@ const TaskListItem = ({ task }: Props): JSX.Element => {
     };
 
     const handleSubmit = (value: string) => {
-        updateTaskMutation.mutate({ id: task.id, title: value });
+        patchTaskMutation.mutate({ id: task.id, title: value });
     };
 
     const handleRemoval = () => {
         console.warn("unimplemented");
     };
 
+    const handleChangeCheckbox = (isChecked: CheckedState) => {
+        patchTaskMutation.mutate({ id: task.id, done: !!isChecked });
+    };
+
     if (mode === "edit")
         return <Form initialValue={task.title} handleCancel={handleCancel} handleSubmit={handleSubmit} />;
 
-    return <ListItem label={task.title} handleEdit={handleEdit} handleRemoval={handleRemoval} />;
+    return (
+        <ListItem
+            checked={!!task.done}
+            onCheckedChange={handleChangeCheckbox}
+            label={task.title}
+            handleEdit={handleEdit}
+            handleRemoval={handleRemoval}
+        />
+    );
 };
 
 export default TaskListItem;
