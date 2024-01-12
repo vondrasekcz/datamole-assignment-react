@@ -1,6 +1,6 @@
 /// <reference types="vite/client" />
 import "styled-components";
-import { olive, grass, blackA, redDark, greenDark } from "@radix-ui/colors";
+import { olive, grass, blackA, red, green } from "@radix-ui/colors";
 
 interface ImportMetaEnv {
     readonly VITE_HTTP_LINK: string;
@@ -12,6 +12,6 @@ interface ImportMeta {
 
 declare module "styled-components" {
     export interface DefaultTheme {
-        colors: typeof olive & typeof grass & typeof blackA & typeof redDark & typeof greenDark;
+        colors: typeof olive & typeof grass & typeof blackA & typeof red & typeof green;
     }
 }

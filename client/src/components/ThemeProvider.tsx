@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from "react";
-import { olive, grass, blackA, redDark, greenDark } from "@radix-ui/colors";
+import { olive, grass, blackA, red, green } from "@radix-ui/colors";
 import { DefaultTheme, ThemeProvider as ThemeProviderStyled } from "styled-components";
 import { GlobalStyle } from "./Global";
 
@@ -8,8 +8,8 @@ const theme: DefaultTheme = {
         ...olive,
         ...grass,
         ...blackA,
-        ...redDark,
-        ...greenDark,
+        ...red,
+        ...green,
     },
 };
 
