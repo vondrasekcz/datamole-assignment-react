@@ -11,9 +11,11 @@ const Actions = styled.div`
     gap: 2px;
 `;
 
-const StyledDiv = styled.div`
+const StyledDiv = styled.li`
     display: flex;
     align-items: center;
+    padding-top: 6px;
+    padding-bottom: 6px;
     &:hover {
         background-color: ${({ theme }) => theme.colors.olive2};
     }

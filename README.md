@@ -28,7 +28,7 @@ More information about client are in `client/README.md`. Make sure you read them
 Using provided UI components, implement following modifications, bugfixes or new features (you can decide in what order):
 
 - [ ] **B1**: Fix all bugs and visual imperfections you find
-- [ ] **B2**: Fix layout of non-empty `List` component
+- [x] **B2**: Fix layout of non-empty `List` component
 - [x] **B3**: Fix Layout component so the `Footer` is always attached to its bottom
 - [x] **UI1**: Style `Header` so the button is aligned on the right
 - [x] **UI2**: Style `ListItem` so action buttons are aligned on the right
@@ -52,7 +52,7 @@ Using provided UI components, implement following modifications, bugfixes or new
 
 ### Advanced tasks (optional)
 - [ ] **O1**: modify the `Form` component (and related ones if needed) so the form field handles not only string, but also number and treat empty string input as `undefiened`
-- [ ] **O2**: limit amount of server calls needed to necessary minimum
+- [x] **O2**: limit amount of server calls needed to necessary minimum
 
 ## Additional comments and restrictions:
 - do not modify API (props) of provided components unless achieving required tasks would not be possible otherwise,

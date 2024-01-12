@@ -11,7 +11,8 @@ interface Props {
 
 const TaskList = ({ isLoading, isError, checkedTasks, unCheckedTasks }: Props): JSX.Element => {
     if (isLoading) return <div>Loading...</div>;
-    if (isError || !checkedTasks || !unCheckedTasks) return <div>Error</div>;
+    if (isError || !checkedTasks || !unCheckedTasks) return <div>Upsss... </div>;
+    if (checkedTasks.length + unCheckedTasks.length === 0) return <div>No tasks</div>;
 
     return (
         <List>

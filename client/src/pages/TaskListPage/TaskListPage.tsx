@@ -13,6 +13,12 @@ const StyledDiv = styled.div`
     padding-bottom: 15px;
 `;
 
+const HeaderWrapper = styled.div`
+    padding-bottom: 15px;
+    border-bottom: 1px solid;
+    border-color: ${(props) => props.theme.colors.olive6};
+`;
+
 const TaskListPage = (): JSX.Element => {
     const { data, isLoading, isError } = useQuery({
         queryKey: QUERY_KEYS.Tasks,
@@ -25,7 +31,9 @@ const TaskListPage = (): JSX.Element => {
     return (
         <Container>
             <Layout>
-                <TaskHeader />
+                <HeaderWrapper>
+                    <TaskHeader />
+                </HeaderWrapper>
                 <StyledDiv>
                     <TaskList
                         isLoading={isLoading}
