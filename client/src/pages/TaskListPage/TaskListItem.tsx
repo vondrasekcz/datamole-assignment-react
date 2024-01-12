@@ -1,7 +1,7 @@
 import { CheckedState } from "@radix-ui/react-checkbox";
 import { useState } from "react";
 import { useMutation, useQueryClient } from "react-query";
-import { QUERY_KEYS, Task, patchTask } from "src/api";
+import { QUERY_KEYS, Task, deleteTask, patchTask } from "src/api";
 import { ListItem } from "src/components/ListItem";
 import { Form } from "src/components/form";
 
@@ -29,6 +29,15 @@ const TaskListItem = ({ task }: Props): JSX.Element => {
         },
     });
 
+    const deleteTaskMutation = useMutation({
+        mutationFn: deleteTask,
+        onSuccess: () => {
+            queryClient.setQueryData(QUERY_KEYS.Tasks, (oldData: Task[] = []): Task[] =>
+                oldData.filter((item) => item.id !== task.id)
+            );
+        },
+    });
+
     const handleEdit = () => {
         setMode("edit");
     };
@@ -42,7 +51,7 @@ const TaskListItem = ({ task }: Props): JSX.Element => {
     };
 
     const handleRemoval = () => {
-        console.warn("unimplemented");
+        deleteTaskMutation.mutate({ id: task.id });
     };
 
     const handleChangeCheckbox = (isChecked: CheckedState) => {
