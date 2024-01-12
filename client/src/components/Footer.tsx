@@ -13,7 +13,7 @@ export type FooterProps = {
     todoItems?: number;
     doneItems?: number;
 };
-export const Footer: React.FC<FooterProps> = ({ todoItems, doneItems }) => (
+export const Footer: React.FC<FooterProps> = ({ todoItems = 0, doneItems = 0 }) => (
     <StyledDiv>
         Todo: {todoItems}
         Done: {doneItems}
