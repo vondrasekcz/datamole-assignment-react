@@ -16,6 +16,9 @@ const StyledDiv = styled.li`
     align-items: center;
     padding-top: 6px;
     padding-bottom: 6px;
+    &:hover {
+        background-color: ${({ theme }) => theme.colors.olive2};
+    }
 
     // Actions display
     &:hover {
