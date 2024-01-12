@@ -8,6 +8,7 @@ export type Task = {
 export type CreateTaskInput = {
     title: string;
 };
+export type DeleteTaskInput = Pick<Task, "id">;
 
 export type PatchTaskInput = Partial<Omit<Task, "id">> & Pick<Task, "id">;
 
@@ -22,4 +23,8 @@ export function createTask(createTaskInput: CreateTaskInput): Promise<Task> {
 
 export function patchTask({ id, ...patchTaskInput }: PatchTaskInput): Promise<Task> {
     return axios.patch(buildApiUrl(`/items/${id}`), patchTaskInput).then((res) => res.data);
+}
+
+export function deleteTask({ id }: DeleteTaskInput): Promise<unknown> {
+    return axios.delete(buildApiUrl(`/items/${id}`)).then((res) => res.data);
 }
