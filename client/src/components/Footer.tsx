@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const StyledDiv = styled.footer`
     display: flex;
-    margin-top: 15px;
+    margin-top: auto;
     padding-top: 15px;
     border-top: 1px solid;
     border-color: ${(props) => props.theme.colors.olive6};
