@@ -8,9 +8,9 @@ const Button = styled.button<Props>`
     display: inline-flex;
     justify-content: center;
 
-    padding: 6px;
+    padding: 4px;
 
-    border-radius: 4px;
+    border-radius: 2px;
     border-width: 1px;
     border-style: solid;
 
